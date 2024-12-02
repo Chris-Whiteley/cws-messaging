@@ -15,10 +15,10 @@ public class ChunkCodec {
     public Chunk decode(String jsonChunk) {
         try {
             ObjectNode objectNode = (ObjectNode) OBJECT_MAPPER.readTree(jsonChunk);
-            UUID id = UUID.fromString(objectNode.get("id").asText());
-            int index = objectNode.get("idx").asInt();
-            int total = objectNode.get("ttl").asInt();
-            String messageChunk = objectNode.get("msg").asText();
+            UUID id = UUID.fromString(objectNode.get("i").asText());
+            int index = objectNode.get("x").asInt();
+            int total = objectNode.get("t").asInt();
+            String messageChunk = objectNode.get("m").asText();
             return Chunk.builder()
                     .id(id)
                     .index(index)
@@ -33,10 +33,10 @@ public class ChunkCodec {
 
     public String encode(Chunk chunk) {
         ObjectNode objectNode = OBJECT_MAPPER.createObjectNode();
-        objectNode.put("id", chunk.getId().toString());
-        objectNode.put("idx", chunk.getIndex());
-        objectNode.put("ttl", chunk.getTotal());
-        objectNode.put("msg", chunk.getMessageChunk());
+        objectNode.put("i", chunk.getId().toString());
+        objectNode.put("x", chunk.getIndex());
+        objectNode.put("t", chunk.getTotal());
+        objectNode.put("m", chunk.getMessageChunk());
         return objectNode.toString();
     }
 }
