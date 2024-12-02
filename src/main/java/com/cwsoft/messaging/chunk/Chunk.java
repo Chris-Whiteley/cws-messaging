@@ -22,7 +22,7 @@ public class Chunk {
         return CODEC.encode(this);
     }
 
-    public Chunk decodeFromJson (String json) {
+    public static Chunk decodeFromJson (String json) {
         return CODEC.decode(json);
     }
 
