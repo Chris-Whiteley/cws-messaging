@@ -25,7 +25,7 @@ public abstract class AbstractConsumer<T> implements Consumer<T> {
      * @return an Optional containing the data if received, or empty if timed out
      */
     @Override
-    public Optional<T> consume(Duration timeout) {
+    public final Optional<T> consume(Duration timeout) {
         String source = getSource();
 
         try {

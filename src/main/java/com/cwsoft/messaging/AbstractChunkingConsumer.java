@@ -8,7 +8,7 @@ import java.time.Duration;
 import java.util.Optional;
 
 @Slf4j
-public abstract class AbstractChunkingConsumer<T> extends AbstractConsumer<T> {
+public abstract class AbstractChunkingConsumer<T> implements Consumer<T> {
 
     private final ChunkStore chunkStore;
 
@@ -18,10 +18,21 @@ public abstract class AbstractChunkingConsumer<T> extends AbstractConsumer<T> {
     }
 
     /**
+     * Retrieves the source from which the message will be consumed.
+     */
+    public abstract String getSource();
+
+
+    /**
+     * Decodes the message into a suitable format for processing.
+     */
+    public abstract T decode(String encodedMessage);
+
+    /**
      * Implementation for retrieving and processing chunks from a source.
      */
     @Override
-    public Optional<T> consume(Duration timeout) {
+    public final Optional<T> consume(Duration timeout) {
         String source = getSource();
         long startTime = System.currentTimeMillis();
         long timeoutMillis = timeout.toMillis();
