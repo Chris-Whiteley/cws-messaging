@@ -11,8 +11,8 @@ public abstract class AbstractChunkingProducer<T> extends AbstractProducer<T> {
     private final ChunkProducer chunkProducer;
 
     // Constructor for dependency injection of ChunkProducer
-    public AbstractChunkingProducer(int maxMessageSize) {
-        this.chunkProducer = new ChunkProducer(maxMessageSize);
+    public AbstractChunkingProducer(int chunkSize) {
+        this.chunkProducer = new ChunkProducer(chunkSize);
     }
 
     /**
@@ -46,5 +46,5 @@ public abstract class AbstractChunkingProducer<T> extends AbstractProducer<T> {
     /**
      * Abstract method that must be implemented by subclasses to send the chunk.
      */
-    abstract void sendChunk(Chunk chunk);
+    protected abstract void  sendChunk(Chunk chunk);
 }

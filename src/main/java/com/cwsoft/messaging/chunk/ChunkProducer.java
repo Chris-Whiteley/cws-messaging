@@ -7,15 +7,13 @@ import java.util.UUID;
 public class ChunkProducer {
     private final int maxChunkMsgSize;
 
-    public ChunkProducer(int maxMessageSize) {
-        if (maxMessageSize <= 9) {
-            throw new IllegalArgumentException("maxMessageSize must be 10 or greater");
+    public ChunkProducer(int chunkSize) {
+        if (chunkSize <= 0) {
+            throw new IllegalArgumentException("chunkSize must be greater than 0");
         }
-        if (maxMessageSize % 2 != 0) {
-            throw new IllegalArgumentException("maxMessageSize must be divisible by 2");
-        }
-        this.maxChunkMsgSize = maxMessageSize / 2;
+        this.maxChunkMsgSize = chunkSize;
     }
+
 
     public Chunks toChunks(MessageToChunk messageToChunk) {
         String message = messageToChunk.getMessage();
