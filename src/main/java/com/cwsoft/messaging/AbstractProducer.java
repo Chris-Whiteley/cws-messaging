@@ -24,7 +24,7 @@ public abstract class AbstractProducer<T> implements Producer<T> {
     /**
      * Sends the message to the resolved destination.
      */
-    public void produce(T message) {
+    public final void produce(T message) {
         String messageName = getMessageName(message);
         String destination = getDestination(message);
         String encodedMessage = encode(message);

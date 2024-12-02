@@ -19,7 +19,7 @@ public abstract class AbstractChunkingProducer<T> extends AbstractProducer<T> {
      * Implementation for sending the encoded message to the destination.
      */
     @Override
-    protected void sendToDestination(String messageName, String destination, String encodedMessage) {
+    protected final void sendToDestination(String messageName, String destination, String encodedMessage) {
         var chunks = chunkProducer.toChunks(
                 MessageToChunk.builder()
                         .name(messageName)
