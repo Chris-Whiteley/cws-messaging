@@ -18,9 +18,11 @@ public class ChunkCodec {
             UUID id = UUID.fromString(objectNode.get("i").asText());
             int index = objectNode.get("x").asInt();
             int total = objectNode.get("t").asInt();
+            String name = objectNode.get("n").asText();
             String messageChunk = objectNode.get("m").asText();
             return Chunk.builder()
                     .id(id)
+                    .name(name)
                     .index(index)
                     .total(total)
                     .messageChunk(messageChunk)
@@ -36,6 +38,7 @@ public class ChunkCodec {
         objectNode.put("i", chunk.getId().toString());
         objectNode.put("x", chunk.getIndex());
         objectNode.put("t", chunk.getTotal());
+        objectNode.put("n", chunk.getName());
         objectNode.put("m", chunk.getMessageChunk());
         return objectNode.toString();
     }

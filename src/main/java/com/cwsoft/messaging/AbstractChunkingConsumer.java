@@ -61,7 +61,6 @@ public abstract class AbstractChunkingConsumer<T> implements Consumer<T> {
                         String encodedMessage = chunks.getMessage();
                         T fullMessage = decode(encodedMessage); // Decode the message
                         chunkStore.remove(chunks.getId()); // Remove the chunks once they are processed
-
                         log.debug("Successfully reassembled full message [{}] from source [{}]", chunk.getName(), source);
                         return Optional.of(fullMessage);
                     }
