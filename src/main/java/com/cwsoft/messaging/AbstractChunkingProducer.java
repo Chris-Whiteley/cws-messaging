@@ -12,6 +12,7 @@ public abstract class AbstractChunkingProducer<T> extends AbstractProducer<T> {
 
     // Constructor for dependency injection of ChunkProducer
     public AbstractChunkingProducer(int chunkSize) {
+        log.debug("creating chunk producer with chunk size of {}", chunkSize);
         this.chunkProducer = new ChunkProducer(chunkSize);
     }
 
@@ -33,8 +34,8 @@ public abstract class AbstractChunkingProducer<T> extends AbstractProducer<T> {
             return; // Or throw an exception if appropriate
         }
 
-        log.debug("Got {} chunks with a total of {} for sending to destination [{}]",
-                chunks.size(), chunks.chunkCount(), destination);
+        log.debug("Got {} chunks for sending to destination [{}]",
+                chunks.size(), destination);
 
         chunks.forEach(chunk -> {
             log.debug("Sending chunk for message [{}] with index [{}] of size [{}] to destination [{}]",
