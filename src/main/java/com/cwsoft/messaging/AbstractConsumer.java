@@ -11,12 +11,12 @@ public abstract class AbstractConsumer<T> implements Consumer<T> {
     /**
      * Retrieves the source from which the message will be consumed.
      */
-    public abstract String getSource();
+    protected abstract String getSource();
 
     /**
      * Decodes the message into a suitable format for processing.
      */
-    public abstract T decode(String encodedMessage);
+    protected abstract T decode(String encodedMessage);
 
     /**
      * Retrieves and processes data when available, blocks until data is received or the timeout occurs.

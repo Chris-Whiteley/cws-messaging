@@ -8,18 +8,18 @@ public abstract class AbstractProducer<T> implements Producer<T> {
     /**
      * Determines the destination based on the message.
      */
-    public abstract String getDestination(T message);
+    protected abstract String getDestination(T message);
 
     /**
      * Determines a name for the message.
      */
-    public abstract String getMessageName(T message);
+    protected abstract String getMessageName(T message);
 
 
     /**
      * Encodes the message into a format suitable for transmission.
      */
-    public abstract String encode(T message);
+    protected abstract String encode(T message);
 
     /**
      * Sends the message to the resolved destination.

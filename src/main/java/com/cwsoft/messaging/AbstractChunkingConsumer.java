@@ -13,20 +13,20 @@ public abstract class AbstractChunkingConsumer<T> implements Consumer<T> {
     private final ChunkStore chunkStore;
 
     // Constructor for dependency injection of ChunkStore
-    public AbstractChunkingConsumer() {
+    protected AbstractChunkingConsumer() {
         this.chunkStore = new ChunkStore(); // You may inject a ChunkStore if required
     }
 
     /**
      * Retrieves the source from which the message will be consumed.
      */
-    public abstract String getSource();
+    protected abstract String getSource();
 
 
     /**
      * Decodes the message into a suitable format for processing.
      */
-    public abstract T decode(String encodedMessage);
+    protected abstract T decode(String encodedMessage);
 
     /**
      * Implementation for retrieving and processing chunks from a source.

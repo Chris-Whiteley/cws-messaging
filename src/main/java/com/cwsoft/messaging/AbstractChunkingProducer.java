@@ -11,7 +11,7 @@ public abstract class AbstractChunkingProducer<T> extends AbstractProducer<T> {
     private final ChunkProducer chunkProducer;
 
     // Constructor for dependency injection of ChunkProducer
-    public AbstractChunkingProducer(int chunkSize) {
+    protected AbstractChunkingProducer(int chunkSize) {
         log.debug("creating chunk producer with chunk size of {}", chunkSize);
         this.chunkProducer = new ChunkProducer(chunkSize);
     }
